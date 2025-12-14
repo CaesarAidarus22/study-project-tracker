@@ -1,16 +1,139 @@
-# React + Vite
+# 📚 Study & Project Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Personal Study & Project Tracker** built with **React** to help students manage coursework, projects, and deadlines in one interactive dashboard.
 
-Currently, two official plugins are available:
+> Designed for university students who handle multiple subjects and projects simultaneously.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🗂 **Kanban Board**
+  - Backlog, In Progress, Done
+  - Drag & Drop antar kolom (DnD Kit)
 
-## Expanding the ESLint configuration
+- ⏰ **Smart Deadline Sorting**
+  - Deadline terdekat otomatis di atas
+  - Tugas tanpa deadline di bawah
+  - Priority-aware (High → Med → Low)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ✏️ **Inline Task Editing**
+  - Edit judul, project, deadline, dan prioritas langsung di kartu
+
+- 🔍 **Search & Filter**
+  - Cari tugas berdasarkan judul / project
+  - Filter berdasarkan mata kuliah / project
+
+- 💾 **Persistent Storage**
+  - Data otomatis tersimpan di `localStorage`
+  - Tidak hilang saat refresh browser
+
+- 🎨 **Interactive UI**
+  - Glow card effect
+  - Animated Lightning background (ReactBits / WebGL)
+  - Smooth micro-interactions
+
+---
+
+## 🖼 Preview
+
+> (Tambahkan screenshot di sini kalau mau)
+
+```text
+Backlog | In Progress | Done
+
+🛠 Tech Stack
+Technology
+Description
+⚛️ React
+UI framework
+⚡ Vite
+Fast build tool
+🎨 Tailwind CSS
+Styling
+🧲 @dnd-kit
+Drag & Drop
+🌩 ReactBits Lightning
+Animated WebGL background
+💾 LocalStorage
+Persistent data
+
+📂 Project Structure
+src/
+├─ components/
+│  ├─ backgrounds/
+│  │  ├─ Lightning.jsx
+│  │  ├─ LightningBG.jsx
+│  │  └─ Lightning.css
+│  ├─ BoardColumn.jsx
+│  ├─ TaskCard.jsx
+│  ├─ TaskForm.jsx
+│  ├─ Filters.jsx
+│  ├─ Stats.jsx
+│  └─ GlowCard.jsx
+├─ hooks/
+│  └─ useLocalStorage.js
+├─ data/
+│  └─ seed.js
+├─ App.jsx
+└─ main.jsx
+
+
+🚀 Getting Started
+1️⃣ Clone Repository
+git clone https://github.com/CaesarAidarus22/study-project-tracker.git
+cd study-project-tracker
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run Development Server
+npm run dev
+
+App akan berjalan di:
+http://localhost:5173
+
+
+🎯 Use Case
+	•	📖 Mahasiswa dengan banyak mata kuliah
+	•	💻 Project-based learning
+	•	📅 Manajemen deadline UAS / tugas besar
+	•	🧠 Personal productivity dashboard
+
+⸻
+
+📌 Future Improvements
+	•	🌙 Dark / Light Mode toggle
+	•	🔔 Deadline notification
+	•	📊 Analytics per mata kuliah
+	•	☁️ Cloud sync (Firebase / Supabase)
+	•	📱 Mobile responsive optimization
+
+⸻
+
+👤 Author
+
+Caesar Aidarus
+Informatics Student
+Universitas Syiah Kuala
+
+📌 GitHub:
+https://github.com/CaesarAidarus22
+
+
+⭐ Appreciation
+
+If you find this project useful, feel free to ⭐ the repository!
+
+Built with ❤️ and a lot of deadlines 😄
+---
+
+## ✅ Cara Pakai
+1. Buka file `README.md` di project kamu
+2. **Replace isinya** dengan teks di atas
+3. Commit & push:
+
+```bash
+git add README.md
+git commit -m "docs: add project README"
+git push
