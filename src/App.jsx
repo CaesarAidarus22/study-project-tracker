@@ -8,7 +8,6 @@ import GlowCard from "./components/GlowCard";
 import GridScanBG from "./components/backgrounds/GridScanBG";
 
 import useLocalStorage from "./hooks/useLocalStorage";
-import { seedTasks } from "./data/seed";
 
 import { DndContext, closestCenter } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
@@ -20,7 +19,8 @@ function uid() {
 const COLS = ["backlog", "doing", "done"];
 
 export default function App() {
-  const [tasks, setTasks] = useLocalStorage("study-tracker.tasks", seedTasks);
+  // ✅ User baru benar-benar kosong (tanpa seed)
+  const [tasks, setTasks] = useLocalStorage("study-tracker.tasks", []);
 
   const projects = Array.from(new Set(tasks.map((t) => t.project))).sort();
 
@@ -52,6 +52,7 @@ export default function App() {
     const next = {
       id: uid(),
       createdAt: Date.now(),
+      status: "backlog",
       ...partial,
     };
     setTasks((prev) => [next, ...prev]);
@@ -85,12 +86,10 @@ export default function App() {
       const targetStatus = overId;
 
       setTasks((prev) => {
-        // update status
         const updated = prev.map((t) =>
           t.id === activeId ? { ...t, status: targetStatus } : t
         );
 
-        // taruh task yang dipindah ke paling bawah kolom target
         const movedTask = updated.find((t) => t.id === activeId);
         if (!movedTask) return prev;
 
@@ -133,10 +132,9 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-[#070316]">
       {/* BACKGROUND (GridScan) */}
       <GridScanBG />
-      
 
       {/* CONTENT */}
       <div className="relative z-10 mx-auto max-w-6xl p-5">
