@@ -5,7 +5,7 @@ import Filters from "./components/Filters";
 import Stats from "./components/Stats";
 import GlowCard from "./components/GlowCard";
 
-import LightningBG from "./components/backgrounds/LightningBG";
+import GridScanBG from "./components/backgrounds/GridScanBG";
 
 import useLocalStorage from "./hooks/useLocalStorage";
 import { seedTasks } from "./data/seed";
@@ -27,12 +27,14 @@ export default function App() {
   const [q, setQ] = useLocalStorage("study-tracker.q", "");
   const [project, setProject] = useLocalStorage("study-tracker.project", "ALL");
 
+  // filter by search + project
   const filtered = tasks.filter((t) => {
     const matchQ = (t.title + " " + t.project).toLowerCase().includes(q.toLowerCase());
     const matchProject = project === "ALL" ? true : t.project === project;
     return matchQ && matchProject;
   });
 
+  // sorting: deadline terdekat di atas, tanpa deadline di bawah, tie-breaker priority
   const byStatus = (status) =>
     filtered
       .filter((t) => t.status === status)
@@ -47,7 +49,11 @@ export default function App() {
       });
 
   function addTask(partial) {
-    const next = { id: uid(), createdAt: Date.now(), ...partial };
+    const next = {
+      id: uid(),
+      createdAt: Date.now(),
+      ...partial,
+    };
     setTasks((prev) => [next, ...prev]);
   }
 
@@ -63,6 +69,7 @@ export default function App() {
     setTasks((prev) => prev.map((t) => (t.id === id ? { ...t, ...updates } : t)));
   }
 
+  // DnD: reorder dalam kolom + pindah kolom (drop ke area kolom)
   function onDragEnd(event) {
     const { active, over } = event;
     if (!over) return;
@@ -73,15 +80,17 @@ export default function App() {
     const activeTask = tasks.find((t) => t.id === activeId);
     if (!activeTask) return;
 
-    // Drop ke AREA KOLOM
+    // ✅ CASE A: drop ke AREA KOLOM (overId adalah id kolom)
     if (COLS.includes(overId)) {
       const targetStatus = overId;
 
       setTasks((prev) => {
+        // update status
         const updated = prev.map((t) =>
           t.id === activeId ? { ...t, status: targetStatus } : t
         );
 
+        // taruh task yang dipindah ke paling bawah kolom target
         const movedTask = updated.find((t) => t.id === activeId);
         if (!movedTask) return prev;
 
@@ -96,17 +105,18 @@ export default function App() {
       return;
     }
 
-    // Drop ke CARD lain
+    // ✅ CASE B: drop ke CARD lain (overId adalah id task)
     const overTask = tasks.find((t) => t.id === overId);
     if (!overTask) return;
 
-    // Reorder dalam kolom yang sama
+    // reorder dalam kolom yang sama
     if (activeTask.status === overTask.status) {
       const status = activeTask.status;
 
       const items = tasks.filter((t) => t.status === status);
       const oldIndex = items.findIndex((t) => t.id === activeId);
       const newIndex = items.findIndex((t) => t.id === overId);
+
       if (oldIndex === -1 || newIndex === -1) return;
 
       const moved = arrayMove(items, oldIndex, newIndex);
@@ -118,14 +128,15 @@ export default function App() {
       return;
     }
 
-    // Pindah kolom via drop ke card
+    // pindah kolom via drop ke card kolom lain
     moveTask(activeId, overTask.status);
   }
 
   return (
     <div className="min-h-screen relative overflow-hidden">
-      {/* BACKGROUND ReactBits */}
-      <LightningBG />
+      {/* BACKGROUND (GridScan) */}
+      <GridScanBG />
+      
 
       {/* CONTENT */}
       <div className="relative z-10 mx-auto max-w-6xl p-5">

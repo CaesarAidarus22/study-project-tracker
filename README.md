@@ -1,139 +1,135 @@
 # 📚 Study & Project Tracker
 
-A modern **Personal Study & Project Tracker** built with **React** to help students manage coursework, projects, and deadlines in one interactive dashboard.
+> Kelola tugas kuliah dan project pribadi dalam satu dashboard interaktif.
 
-> Designed for university students who handle multiple subjects and projects simultaneously.
+**Study & Project Tracker** adalah aplikasi web berbasis React yang membantu mahasiswa mengatur tugas kuliah, project, dan deadline dengan tampilan modern, interaktif, dan responsif.
 
----
-
-## ✨ Features
-
-- 🗂 **Kanban Board**
-  - Backlog, In Progress, Done
-  - Drag & Drop antar kolom (DnD Kit)
-
-- ⏰ **Smart Deadline Sorting**
-  - Deadline terdekat otomatis di atas
-  - Tugas tanpa deadline di bawah
-  - Priority-aware (High → Med → Low)
-
-- ✏️ **Inline Task Editing**
-  - Edit judul, project, deadline, dan prioritas langsung di kartu
-
-- 🔍 **Search & Filter**
-  - Cari tugas berdasarkan judul / project
-  - Filter berdasarkan mata kuliah / project
-
-- 💾 **Persistent Storage**
-  - Data otomatis tersimpan di `localStorage`
-  - Tidak hilang saat refresh browser
-
-- 🎨 **Interactive UI**
-  - Glow card effect
-  - Animated Lightning background (ReactBits / WebGL)
-  - Smooth micro-interactions
+Aplikasi ini **100% frontend**, tanpa backend, dan menyimpan data langsung di browser menggunakan **localStorage**.
 
 ---
 
-## 🖼 Preview
+## ✨ Fitur Utama
 
-> (Tambahkan screenshot di sini kalau mau)
+- 🗂️ **Kanban Board** (Backlog • In Progress • Done)
+- ⏰ **Sorting otomatis berdasarkan deadline terdekat**
+- 🔍 **Search & Filter berdasarkan project**
+- 📝 **Tambah, edit, dan hapus task**
+- 🎯 **Prioritas task** (Low • Medium • High)
+- 🖱️ **Drag & Drop antar kolom**
+- 📊 **Statistik task**
+- 💾 **Auto-save ke localStorage**
+- 🌌 **Animated Background (ReactBits GridScan)**
+- 💡 **Glow Card + efek interaktif**
 
-```text
-Backlog | In Progress | Done
+---
 
-🛠 Tech Stack
-Technology
-Description
-⚛️ React
-UI framework
-⚡ Vite
-Fast build tool
-🎨 Tailwind CSS
-Styling
-🧲 @dnd-kit
-Drag & Drop
-🌩 ReactBits Lightning
-Animated WebGL background
-💾 LocalStorage
-Persistent data
+## 🎨 Tampilan
 
-📂 Project Structure
-src/
-├─ components/
-│  ├─ backgrounds/
-│  │  ├─ Lightning.jsx
-│  │  ├─ LightningBG.jsx
-│  │  └─ Lightning.css
-│  ├─ BoardColumn.jsx
-│  ├─ TaskCard.jsx
-│  ├─ TaskForm.jsx
-│  ├─ Filters.jsx
-│  ├─ Stats.jsx
-│  └─ GlowCard.jsx
-├─ hooks/
-│  └─ useLocalStorage.js
-├─ data/
-│  └─ seed.js
-├─ App.jsx
-└─ main.jsx
+- UI modern dengan **dark theme**
+- Animated **GridScan background**
+- Glow card yang responsif terhadap interaksi
+- Smooth animation (ringan & tidak berat)
 
+---
 
-🚀 Getting Started
-1️⃣ Clone Repository
+## 🛠️ Tech Stack
+
+| Teknologi | Digunakan untuk |
+|---------|----------------|
+| **React + Vite** | Frontend framework |
+| **Tailwind CSS** | Styling |
+| **@dnd-kit** | Drag & Drop |
+| **ReactBits** | Animated background |
+| **LocalStorage** | Penyimpanan data |
+| **Vercel** | Deployment |
+
+---
+
+## 🚀 Live Demo
+
+🔗 **Live Website:**  
+👉 https://study-project-tracker.vercel.app  
+*(ganti dengan URL Vercel kamu kalau beda)*
+
+---
+
+## 🧠 Cara Kerja Aplikasi
+
+- Semua data task disimpan di **browser pengguna**
+- Tidak ada akun / login
+- Setiap pengguna punya data masing-masing
+- Refresh halaman **tidak menghapus data**
+- Data hanya hilang jika:
+  - Clear browser data
+  - Pakai incognito
+  - Buka dari device lain
+
+---
+
+## 🧑‍💻 Cara Menjalankan Secara Lokal
+
+```bash
+# Clone repository
 git clone https://github.com/CaesarAidarus22/study-project-tracker.git
+
+# Masuk ke folder
 cd study-project-tracker
 
-2️⃣ Install Dependencies
+# Install dependencies
 npm install
 
-3️⃣ Run Development Server
+# Jalankan development server
 npm run dev
 
-App akan berjalan di:
-http://localhost:5173
 
+## Struktur Folder
+src/
+├── components/
+│   ├── backgrounds/
+│   │   └── GridScanBG.jsx
+│   ├── BoardColumn.jsx
+│   ├── TaskCard.jsx
+│   ├── TaskForm.jsx
+│   ├── Filters.jsx
+│   ├── Stats.jsx
+│   └── Header.jsx
+├── hooks/
+│   └── useLocalStorage.js
+├── data/
+│   └── seed.js
+├── App.jsx
+└── main.jsx
 
-🎯 Use Case
-	•	📖 Mahasiswa dengan banyak mata kuliah
-	•	💻 Project-based learning
-	•	📅 Manajemen deadline UAS / tugas besar
-	•	🧠 Personal productivity dashboard
+❓ FAQ
+
+Apakah aplikasi ini butuh backend?
+
+❌ Tidak.
+Aplikasi ini sepenuhnya frontend dan menggunakan localStorage.
+
+Apakah data bisa dibagikan ke orang lain?
+
+❌ Tidak secara otomatis.
+Setiap pengguna punya data sendiri di browser masing-masing.
+
+Apakah aman?
+
+✔️ Aman untuk penggunaan pribadi dan tugas kuliah.
+❗ Tidak disarankan untuk data sensitif.
 
 ⸻
 
-📌 Future Improvements
-	•	🌙 Dark / Light Mode toggle
-	•	🔔 Deadline notification
-	•	📊 Analytics per mata kuliah
-	•	☁️ Cloud sync (Firebase / Supabase)
-	•	📱 Mobile responsive optimization
+📌 Cocok Digunakan Untuk
+	•	Mahasiswa Informatika
+	•	Project pribadi
+	•	Tugas kuliah
+	•	Personal productivity
+	•	Showcase portfolio frontend
 
 ⸻
 
 👤 Author
 
 Caesar Aidarus
-Informatics Student
+Mahasiswa Informatika
 Universitas Syiah Kuala
-
-📌 GitHub:
-https://github.com/CaesarAidarus22
-
-
-⭐ Appreciation
-
-If you find this project useful, feel free to ⭐ the repository!
-
-Built with ❤️ and a lot of deadlines 😄
----
-
-## ✅ Cara Pakai
-1. Buka file `README.md` di project kamu
-2. **Replace isinya** dengan teks di atas
-3. Commit & push:
-
-```bash
-git add README.md
-git commit -m "docs: add project README"
-git push
